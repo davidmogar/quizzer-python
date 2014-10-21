@@ -4,7 +4,7 @@ import quizzer.utils.url_reader as urlreader
 __author__ = 'David Moreno García'
 
 
-def load_tests(tests_url):
+def load_all_tests(tests_url):
     if not tests_url:
         raise AttributeError("Tests URL cannot be null")
 
