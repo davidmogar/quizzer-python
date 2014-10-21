@@ -1,10 +1,9 @@
-__author__ = 'David Moreno García'
-
 from abc import ABCMeta, abstractmethod
+
+__author__ = 'David Moreno García'
 
 
 class Question(metaclass=ABCMeta):
-
     def __init__(self, question_id, text):
         self._question_id = question_id
         self._text = text
@@ -15,7 +14,6 @@ class Question(metaclass=ABCMeta):
 
 
 class MultichoiceQuestion(Question):
-
     _alternatives = dict()
 
     def __init__(self, question_id, text):
@@ -31,7 +29,6 @@ class MultichoiceQuestion(Question):
         return self._alternatives[answer.value]._value if answer.value in self._alternatives else 0
 
     class Alternative:
-
         def __init__(self, alternative_id, text, value):
             self._alternative_id = alternative_id
             self._text = text
@@ -39,7 +36,6 @@ class MultichoiceQuestion(Question):
 
 
 class NumericalQuestion(Question):
-
     correct = 0
     value_correct = 0
     value_incorrect = 0
@@ -55,7 +51,6 @@ class NumericalQuestion(Question):
 
 
 class TrueFalseQuestion(Question):
-
     correct = True
     feedback = ""
     value_correct = 0

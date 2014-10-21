@@ -1,6 +1,6 @@
-__author__ = 'David Moreno García'
-
 from quizzer.domain.grade import Grade
+
+__author__ = 'David Moreno García'
 
 
 class Assessment:
