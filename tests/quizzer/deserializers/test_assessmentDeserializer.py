@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-import quizzer.deserializers.assessment_deserializer as AssessmentDeserializer
+import quizzer.deserializers.assessment_deserializer as assessment_deserializer
 from quizzer.domain.questions import *
 
 
@@ -61,7 +61,7 @@ class TestAssessmentDeserializer(TestCase):
     '''
 
     def test_deserialize_answers(self):
-        answers = AssessmentDeserializer.deserialize_answers(self.answers_json)
+        answers = assessment_deserializer.deserialize_answers(self.answers_json)
 
         self.assertIsNotNone(answers, 'Answers is none')
         self.assertTrue(len(answers) == 3, 'Unexpected size for answers map')
@@ -70,7 +70,7 @@ class TestAssessmentDeserializer(TestCase):
         self.assertTrue(len(answers[221]) == 1, 'Unexpected size for answers of student id 221')
 
     def test_deserialize_grades(self):
-        grades = AssessmentDeserializer.deserialize_grades(self.grades_json)
+        grades = assessment_deserializer.deserialize_grades(self.grades_json)
 
         self.assertIsNotNone(grades, 'Grades is none')
         self.assertTrue(len(grades) == 3, 'Unexpected size for grades map')
@@ -79,7 +79,7 @@ class TestAssessmentDeserializer(TestCase):
         self.assertAlmostEqual(grades[221].grade, 0.75, 'Grade value for id', 0.05)
 
     def test_deserialize_questions(self):
-        questions = AssessmentDeserializer.deserialize_questions(self.questions_json)
+        questions = assessment_deserializer.deserialize_questions(self.questions_json)
 
         self.assertIsNotNone(questions, 'Questions is none')
         self.assertTrue(len(questions) == 2, 'Unexpected size for questions map')
@@ -87,6 +87,6 @@ class TestAssessmentDeserializer(TestCase):
         self.assertTrue(isinstance(questions[2], TrueFalseQuestion), 'Unexpected type for question 2')
         self.assertTrue(questions[2].correct, 'Unexpected value for question 2')
 
-        answers = AssessmentDeserializer.deserialize_answers(self.answers_json)
+        answers = assessment_deserializer.deserialize_answers(self.answers_json)
         self.assertAlmostEqual(questions[1].get_score(answers[234][0]), 1,
                                'Unexpected score for answer 1 of student 234', 0.05)
