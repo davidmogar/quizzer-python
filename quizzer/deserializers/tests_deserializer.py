@@ -5,6 +5,12 @@ __author__ = 'David Moreno García'
 
 
 def deserialize(json_string):
+    """
+    Deserializes the JSON representation received as arguments to a list of Test objects.
+
+    :param json_string: JSON representation of Test objects
+    :return: a list containing the tests deserialized
+    """
     tests = list()
 
     if json_string:

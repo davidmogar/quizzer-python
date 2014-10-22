@@ -7,6 +7,12 @@ __author__ = 'David Moreno García'
 
 
 def deserialize_answers(json_string):
+    """
+    Deserializes the JSON representation received as arguments to a map of student ids to Answer objects.
+
+    :param json_string: JSON representation of the answers objects
+    :return: a map of student ids to Answer objects
+    """
     answers = dict()
 
     if json_string:
@@ -23,6 +29,12 @@ def deserialize_answers(json_string):
 
 
 def deserialize_grades(json_string):
+    """
+    Deserializes the JSON representation received as arguments to a map of student ids to Grade objects.
+
+    :param json_string: JSON representation of the grades objects
+    :return: a map of student ids to Grade objects
+    """
     grades = dict()
 
     if json_string:
@@ -36,6 +48,11 @@ def deserialize_grades(json_string):
 
 
 def deserialize_multichoice(hash):
+    """
+    Deserialize a Multichoice question
+    :param hash: HashMap containing the question data
+    :return: question created
+    """
     question = MultichoiceQuestion(hash['id'], hash['questionText'])
 
     if 'alternatives' in hash:
@@ -47,6 +64,11 @@ def deserialize_multichoice(hash):
 
 
 def deserialize_numerical(hash):
+    """
+    Deserialize a Numerical question
+    :param hash: HashMap containing the question data
+    :return: question created
+    """
     question = NumericalQuestion(hash['id'], hash['questionText'])
 
     if 'correct' in hash:
@@ -60,6 +82,11 @@ def deserialize_numerical(hash):
 
 
 def deserialize_true_false(hash):
+    """
+    Deserialize a True/False question
+    :param hash: HashMap containing the question data
+    :return: question created
+    """
     question = TrueFalseQuestion(hash['id'], hash['questionText'])
 
     if 'correct' in hash:
@@ -73,6 +100,7 @@ def deserialize_true_false(hash):
 
     return question
 
+# Hash used to decide what method to call based on the question type
 question_type = {
     'multichoice': deserialize_multichoice,
     'numerical': deserialize_numerical,
@@ -81,6 +109,12 @@ question_type = {
 
 
 def deserialize_questions(json_string):
+    """
+    Deserializes the JSON representation received as arguments to a map of questions ids to Question objects.
+
+    :param json_string: JSON representation of the questions objects
+    :return: a map of questions ids to Question objects
+    """
     questions = dict()
 
     if json_string:

@@ -10,6 +10,12 @@ class Question(metaclass=ABCMeta):
 
     @abstractmethod
     def get_score(self, answer):
+        """
+        Calculates the score obtained by an student given its answer.
+
+        :param answer: answer of the student to this question
+        :return: calculated score
+        """
         pass
 
 

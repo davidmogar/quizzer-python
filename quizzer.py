@@ -11,6 +11,13 @@ __author__ = 'David Moreno García'
 
 
 def calculate_grades(questions_url, answers_url):
+    """
+    Calculate assessments' grades given the urls to the questions and answers files.
+
+    :param questions_url: URL to the questions file
+    :param answers_url: URL to the answers file
+    :return: a new assessment with containing questions, answers and calculated grades
+    """
     assessment = assessment_loader.load_assessment_from_urls(questions_url, answers_url, None)
     assessment.calculate_grades()
 
@@ -18,16 +25,33 @@ def calculate_grades(questions_url, answers_url):
 
 
 def show_grades(grades, format):
+    """
+    Show the grades received as argument in the format specified.
+
+    :param grades: grades to show
+    :param format: format of the output
+    """
     print('Assessment\'s grades')
     print(assessment_serializer.serialize_grades(grades, format) + "\n")
 
 
 def show_statistics(statistics, format):
+    """
+    Show the statistics received as argument in the format specified.
+
+    :param statistics: statistics to show
+    :param format: format of the output
+    """
     print('Assessment\'s statistics')
     print(assessment_serializer.serialize_statistics(statistics, format) + "\n")
 
 
 def validate_assessments(url):
+    """
+    Validate tests inside of the file referenced by the URL argument.
+
+    :param url: URL to the tests file
+    """
     valid = True
 
     for test in tests_loader.load_all_tests(url):
@@ -41,6 +65,8 @@ def validate_assessments(url):
 
     print('All tests OK') if valid else print('Tests failed')
 
+
+# Parse command line arguments and decide what method to call next
 parser = argparse.ArgumentParser()
 parser.add_argument('-a', help='URL to the answers file')
 parser.add_argument('-o', help='Generate output in the specified format (json or xml)')

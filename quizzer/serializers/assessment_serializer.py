@@ -5,6 +5,13 @@ __author__ = 'David Moreno García'
 
 
 def serialize_grades(grades, format):
+    """
+    Returns an string with the representation of the grades in the desired format.
+
+    :param grades: grades to serialize
+    :param format: format of the output
+    :return: an string with the representation in the desired format
+    """
     if format == 'xml':
         result = xml_serializer.serialize_grades(grades)
     else:
@@ -14,6 +21,13 @@ def serialize_grades(grades, format):
 
 
 def serialize_statistics(statistics, format):
+    """
+    Returns an string with the representation of the statistics in the desired format.
+
+    :param statistics: statistics to serialize
+    :param format: format of the output
+    :return: an string with the representation in the desired format
+    """
     if format == 'xml':
         result = xml_serializer.serialize_statistics(statistics)
     else:

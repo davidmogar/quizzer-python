@@ -10,12 +10,21 @@ class Assessment:
         self._grades = dict()
 
     def calculate_grades(self):
+        """
+        Calculate the grades of this assessment.
+        """
         self._grades = dict()
 
         for student_id in self._answers:
             self._grades[student_id] = Grade(student_id, self.calculate_student_grade(student_id))
 
     def calculate_student_grade(self, student_id):
+        """
+        Calculates the grade of a given student.
+
+        :param student_id: id of the student
+        :return: calculated grade of the student
+        """
         grade = 0
 
         if student_id in self._answers:
@@ -27,6 +36,11 @@ class Assessment:
         return grade
 
     def get_statistics(self):
+        """
+        Returns a HashMap mapping each question id with the number of correct answers of that question.
+
+        :return: a HashMap with the questions' statistics
+        """
         statistics = dict()
 
         for student_id in self._answers:
@@ -41,8 +55,14 @@ class Assessment:
 
         return statistics
 
-
     def validate_grade(self, grade):
+        """
+        Validates the grade received as argument, checking that the value stored correspond to the grade obtained by
+        the student.
+
+        :param grade: grade to validate
+        :return: true if the grade is valid, false otherwise
+        """
         valid = False
 
         if grade:
@@ -51,6 +71,12 @@ class Assessment:
         return valid
 
     def validate_grades(self):
+        """
+        Validate all the grades of this assessment, checking that all the values stored in each grade correspond to
+        the actual grade obtained by the students.
+
+        :return: true if all the grades are valid, false otherwise
+        """
         valid = True
 
         for student_id, grade in self._grades.items():
