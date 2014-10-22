@@ -1,6 +1,7 @@
 import argparse
 import sys
 
+import quizzer.server as server
 import quizzer.loaders.assessment_loader as assessment_loader
 import quizzer.loaders.tests_loader as tests_loader
 import quizzer.serializers.assessment_serializer as assessment_serializer
@@ -50,7 +51,7 @@ parser.add_argument('-t', help='Validate assessments in tests file')
 args = parser.parse_args()
 
 if not len(sys.argv) > 1:
-    print('No arguments')
+    server.app.run()
 elif args.t:
     validate_assessments(args.t)
 elif args.a and args.q:
