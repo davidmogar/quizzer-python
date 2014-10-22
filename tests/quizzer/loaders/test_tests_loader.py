@@ -5,7 +5,7 @@ import quizzer.loaders.tests_loader as tests_loader
 __author__ = 'David Moreno García'
 
 
-class TestLoad_tests(TestCase):
+class TestTestsLoader(TestCase):
 
     tests_url = 'tests/resources/tests.json'
 
